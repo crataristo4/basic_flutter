@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_network/flutterBloc/bloc/bloc.dart';
+import 'package:flutter_network/flutterBloc/myPost.dart';
+import 'package:flutter_network/flutterBloc/repo/services.dart';
 import 'package:flutter_network/loginBlocPattern/login.dart';
 import 'package:flutter_network/pages/homePage.dart';
 import 'package:flutter_network/ui/BasicCalculator.dart';
@@ -7,6 +10,7 @@ import 'package:flutter_network/ui/FetchFakePhotos.dart';
 import 'package:flutter_network/ui/GetFakePhotos.dart';
 import 'package:flutter_network/ui/LoadFakePosts.dart';
 import 'package:flutter_network/ui/ProfilePage.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ButtonClicks extends StatelessWidget {
   @override
@@ -17,6 +21,25 @@ class ButtonClicks extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BlocProvider(
+                              create: (context) =>
+                                  PostBloc(postRepository: PostServices()),
+                              child: MyPosts())));
+                },
+                child: Text(
+                  "Fetch Posts with bloc",
+                  style: TextStyle(
+                      fontStyle: FontStyle.normal, color: Colors.green),
+                ),
+              ),
               RaisedButton(
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -36,7 +59,10 @@ class ButtonClicks extends StatelessWidget {
                     return FetchFakePhotos();
                   }));
                 },
-                child: Text("Fake Photos",style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Fake Photos",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               RaisedButton(
                 elevation: 8.0,
@@ -46,7 +72,10 @@ class ButtonClicks extends StatelessWidget {
                     return GetFakePhotos();
                   }));
                 },
-                child: Text("Load Fake Photos",style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Load Fake Photos",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               RaisedButton(
                 elevation: 8.0,
@@ -56,7 +85,10 @@ class ButtonClicks extends StatelessWidget {
                     return FakePosts();
                   }));
                 },
-                child: Text("LOAD ALL FAKE POSTS",style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "LOAD ALL FAKE POSTS",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               RaisedButton(
                 elevation: 8.0,
@@ -66,9 +98,11 @@ class ButtonClicks extends StatelessWidget {
                     return BasicCalculator();
                   }));
                 },
-                child: Text("Basic Calculator",style: TextStyle(color: Colors.black),),
+                child: Text(
+                  "Basic Calculator",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
-
               RaisedButton(
                 elevation: 8.0,
                 color: Colors.deepOrange,
@@ -77,9 +111,11 @@ class ButtonClicks extends StatelessWidget {
                     return HomePage();
                   }));
                 },
-                child: Text("Responsive design",style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Responsive design",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-
               RaisedButton(
                 elevation: 8.0,
                 color: Colors.deepOrange,
@@ -88,7 +124,10 @@ class ButtonClicks extends StatelessWidget {
                     return ProfilePage();
                   }));
                 },
-                child: Text("Upload to fb",style: TextStyle(color: Colors.white),),
+                child: Text(
+                  "Upload to fb",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               FlatButton(
                 color: Colors.blueGrey,
@@ -97,7 +136,10 @@ class ButtonClicks extends StatelessWidget {
                     return LoginPage();
                   }));
                 },
-                child: Text("Log in bloc pattern",style: TextStyle(color: Colors.black),),
+                child: Text(
+                  "Log in bloc pattern",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ],
           ),

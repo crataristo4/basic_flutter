@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_network/flutterBloc/bloc/bloc.dart';
+import 'package:flutter_network/flutterBloc/myPost.dart';
+import 'package:flutter_network/flutterBloc/repo/services.dart';
 import 'package:flutter_network/ui/homeButtons.dart';
-import 'file:///D:/lenovo/flutter_network/lib/model/Posts.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,6 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       body: ButtonClicks(),
+     /* body: BlocProvider(
+        create: (context) => PostBloc(postRepository: PostServices()),
+        child: MyPosts(),
+      ),*/
 
     );
   }
