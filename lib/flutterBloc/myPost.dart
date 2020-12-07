@@ -4,6 +4,7 @@ import 'package:flutter_network/flutterBloc/bloc/bloc.dart';
 import 'package:flutter_network/flutterBloc/bloc/events.dart';
 import 'package:flutter_network/flutterBloc/bloc/postStates.dart';
 import 'package:flutter_network/flutterBloc/itemslist.dart';
+import 'package:flutter_network/flutterBloc/loading.dart';
 import 'package:flutter_network/flutterBloc/model/postsList.dart';
 
 import 'errormessages/errormsg.dart';
@@ -56,7 +57,7 @@ class _MyPostsState extends State<MyPosts> {
               return _listOfPosts(posts);
             }
 
-            return CircularProgressIndicator();
+            return Loading();
           },
         )
       ],
