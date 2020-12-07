@@ -42,14 +42,17 @@ class _MyPostsState extends State<MyPosts> {
 
   _body() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         BlocBuilder<PostBloc, PostState>(
           builder: (_, PostState postState) {
             if (postState is PostErrorState) {
               final error = postState.errorMessage;
+              final errorMsg = "${error.message}\nTap to retry";
               return ErrorMessage(
-                error: error.message,
-                onTap: _loading(),
+                error: errorMsg,
+                onTap: _loading,
               );
             }
             if (postState is PostLoaded) {

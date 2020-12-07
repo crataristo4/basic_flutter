@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ErrorMessage extends StatelessWidget {
@@ -11,13 +14,14 @@ class ErrorMessage extends StatelessWidget {
     return Expanded(
         child: Center(
             child: Container(
-      child: InkWell(
-        onTap: onTap,
-        child: Text(
-          error,
+              child: InkWell(
+                onTap: onTap,
+                child: Text(
+                  error,
           textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
-      ),
-    )));
+              ),
+            )));
   }
 }
